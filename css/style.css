@@ -36,10 +36,15 @@ a:active{
 #main{
 	width: 768px;
 }
-#clear{
+#clear_bottom,#clear_top{
 	width: 100%;
-	height: 280px;
 	clear: both;
+}
+#clear_bottom{
+	height: 280px;
+}
+#clear_top{
+	height: 200px;
 }
 
 /* #### END -> GENERAL STYLES */
@@ -78,6 +83,29 @@ a:active{
 }
 
 /* #### END -> POST PAGE */
+
+/* #### HEADER STYLES */
+#header_div{
+	width: 100%;
+	height: 200px;
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	left: 0px;
+	background: url(../images/top_background.png) repeat-x;
+}
+#header_title{
+	height: 200px;
+	background: url(../images/top.png) no-repeat;
+	color: #FAFAFA;
+	line-height: 270px;
+	font-size: 60px;
+	font-style: italic;
+	text-indent: 170px;
+	color: #d6820b;
+}
+
+/* #### END -> HEADER STYLES */
 
 /* #### MENU STYLES */
 #menu_div ul{
