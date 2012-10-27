@@ -32,14 +32,14 @@
 	<name>SquareNews</name>
 	<description>Spread it near!</description>
 	<author href="http://twitter.com/#!/AcquaBlue">Thiago Itagaki</author>
-	<rim:loadingScreen backgroundImage="img/splash.jpg" onLocalPageLoad="true"/>
+	<rim:loadingScreen backgroundImage="img/splash.jpg" foregroundImage="img/splash.jpg" onLocalPageLoad="true"/>
 	<icon src="img/icon.png"/>
 
 	<rim:orientation mode="portrait" />
 
-	<content src="index.html"/>
+	<content src="home.html"/>
 
-	<rim:category name="Media"/>
+	<rim:category name="Social"/>
 
 	<rim:permissions>
 		<rim:permit>access_shared</rim:permit>
@@ -103,17 +103,6 @@
 
 	<feature id="blackberry.push" required="true" version="1.0.0.0"/>
 	<feature id="blackberry.find" required="true" version="1.0.0.0"/>
-
-	<!--
-		Tablet OS APIs:
-			The following features are available ONLY on Tablet OS
-		...
-	-->
-	<!--
-	COMMENT THE FOLLOWING WHEN BUILDING USING THE SMARTPHONE SDK.
-
-	<feature id="blackberry.payment" required="true" version="1.0.0.0"/>
-	-->
 
 	<access subdomains="true" uri="*"/>
 
