@@ -20,7 +20,7 @@
 		newsMarkers = [];
 		for (i in np) {
 			p = np[i];
-			txt += "<div id='post" + i + "' class='newsPost'><div class='newsTitle'>" + p.title + "</div><div class='newsAction'><img id='text" + i + "' src='images/text.png'/><img id='map" + i + "'src='images/map.png'/></div></div>";
+			txt += "<div id='post" + i + "' class='newsPost'><div class='newsTitle'>" + p.title + "</div><div class='newsAction'><img id='text" + i + "' src='images/text.png' onclick='getNewsMap("+i+");'/><img id='map" + i + "'src='images/map.png' onclick='getNewsMap("+i+");'/></div></div>";
 		}
 		$("#postlist").html(txt);
 	}
@@ -36,17 +36,6 @@
 			</div>
 			<div id="clear_top"></div>
 			<div id="postlist">
-<!--				<div id='post1' class='newsPost'><div class='newsTitle'>Teste 1</div><div class='newsAction'><img src="images/text.png"/><img src="images/map.png"/></div></div>
-				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 2</div><div class='newsAction'><img src="images/text.png"/><img src="images/map.png"/></div></div>
-				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 3</div><div class='newsAction'><img src="images/text.png"/><img src="images/map.png"/></div></div>
-				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 4</div><div class='newsAction'><img src="images/text.png"/><img src="images/map.png"/></div></div>
-				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 5</div><div class='newsAction'><img src="images/text.png"/><img src="images/map.png"/></div></div>
-				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 6</div><div class='newsAction'><img src="images/text.png"/><img src="images/map.png"/></div></div>
-				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 7</div><div class='newsAction'><img src="images/text.png"/><img src="images/map.png"/></div></div>
-				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 8</div><div class='newsAction'><img src="images/text.png"/><img src="images/map.png"/></div></div>
-				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 9</div><div class='newsAction'><img src="images/text.png"/><img src="images/map.png"/></div></div>
-				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 10</div><div class='newsAction'><img src="images/text.png"/><img src="images/map.png"/></div></div>
-				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 11</div><div class='newsAction'><img src="images/text.png"/><img src="images/map.png"/></div></div>-->
 			</div>
 			<div id="clear_bottom"></div>
 			<div id="menu_div">
