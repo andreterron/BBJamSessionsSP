@@ -9,9 +9,15 @@
 	<script src="js/geolib.js" type="text/JavaScript"></script>
 	<script src="js/postlib.js" type="text/JavaScript"></script>
 	<script src="js/javascript.js" type="text/javascript" ></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>SquareNews</title>
 	<script>
-	$(document).ready( function() {
+	function updateList() {
+		var txt = "";
 		
+	}
+	$(document).ready( function() {
+		updateList();
 		$('#newstxt').keypress(function(event) {
 			if (event.keyCode == 13) {
 				event.preventDefault();
@@ -25,6 +31,16 @@
   </head>
   <body>
 		<div id="postlist">
+			<div
+		</div>
+		<div id="main">
+			<div id="menu_div">
+				<ul id="bottom_menu">
+					<li id="menu_1" class="menu_secondary"><img src="images/Icon_Post.png"/></li>
+					<li id="menu_2" class="menu_primary"><img src="images/Icon_Home.png"/></li>
+					<li id="menu_3" class="menu_secondary"><img src="images/Icon_Config.png"/></li>
+				</ul>
+			</div>
 		</div>
   </body>
 </html>
