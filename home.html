@@ -20,7 +20,7 @@
 		newsMarkers = [];
 		for (i in np) {
 			p = np[i];
-			txt += "<div id='post" + i + "' class='newsPost'><div class='newsTitle'>" + p.title + "</div><div class='newsAction'><img id='text" + i + "' src='images/text.png' onclick='getNewsMap("+i+");'/><img id='map" + i + "'src='images/map.png' onclick='getNewsMap("+i+");'/></div></div>";
+			txt = "<div id='post" + i + "' class='newsPost'><div class='newsTitle'>" + p.title + "</div><div class='newsAction'><img id='text" + i + "' src='images/text.png' onclick='getNewsMap("+i+");'/><img id='map" + i + "'src='images/map.png' onclick='getNewsMap("+i+");'/></div></div>" + txt;
 		}
 		$("#postlist").html(txt);
 	}
