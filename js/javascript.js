@@ -1,38 +1,27 @@
-var map;
+var map = null;
 var userMarker;
-
-function initialize() {
-	//alert("FUUUU");
-  var mapOptions = {
-    zoom: 16,
-    center: new google.maps.LatLng(-23.6069944, -46.6967345),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-
-  map = new google.maps.Map(document.getElementById('map_canvas'),
-      mapOptions);
-
-  userMarker = new google.maps.Marker({
-    position: map.getCenter(),
-    map: map,
-    title: 'Click to zoom'
-  });
-
-  google.maps.event.addListener(map, 'center_changed', function() {
-    // 3 seconds after the center of the map has changed, pan back to the
-    // userMarker.
-    /*window.setTimeout(function() {
-      map.panTo(userMarker.getPosition());
-    }, 3000);*/
-  });
-
-  google.maps.event.addListener(userMarker, 'click', function() {
-    map.setZoom(16);
-    map.setCenter(userMarker.getPosition());
-  });
+var userPos = {
+	"lat": 0,
+	"lng": 0
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+function setUserPos(lat, lng) {
+	if (map) {
+		var latlonpos = new google.maps.LatLng(lat, lng);
+		userMarker.setPosition(latlonpos);
+	}
+	userPos.lat = lat;
+	userPos.lng = lng;
+}
+
+function getUserPos() {
+	return userPos;
+	if (map) {
+		return new google.maps.LatLng(userPos.lat, userPos.lng);
+	} else {
+		return userPos;
+	}
+}
 
 function getPosSuccess (position) {
 	var coordinates, gpsTime;
@@ -42,21 +31,22 @@ function getPosSuccess (position) {
 	coordinates = position.coords;
 	gpsTime = position.timestamp;
 		
-	var lat, lon, alt, acc, altAcc, head, speed, sb;
+	var lat, lng, alt, acc, altAcc, head, speed, sb;
 	
 	lat = coordinates.latitude;
-	lon = coordinates.longitude;
+	lng = coordinates.longitude;
 	alt = coordinates.altitude;
 	acc = coordinates.accuracy;
 	altAcc = coordinates.altitudeAccuracy;
 	head = coordinates.heading;
 	speed = coordinates.speed;
-	//alert('lat:' + lat + "\nlon:" + lon);
-	
-	var latlonpos = new google.maps.LatLng(lat, lon);
-	userMarker.setPosition(latlonpos);
-	map.setZoom(16);
-    map.setCenter(latlonpos);
+	//alert('lat:' + lat + "\nlon:" + lng);
+	setUserPos(lat, lng);
+	if (map) {
+		map.setZoom(16);
+		map.setCenter(new google.maps.LatLng(lat, lng));
+		getNearbyNews();
+	}
 }
 
 function getPosFake (posError) {
@@ -77,22 +67,33 @@ function getPosFake (posError) {
 	/* Other places: 
 		here:	-23.6069944, -46.6967345
 		south:	-23.6095929, -46.6976452
+		north:	-23.6044218, -46.6945767
 	*/
 	
 }
 
 var newsMarkers = [];
 
+function postNewsHere() {
+	var str = $("#newstxt").val();
+	if (!str) return;
+	//var mpos = userMarker.getPosition();
+	var mpos = getUserPos();
+	postNews (str, mpos.lat, mpos.lng);
+	$("#newstxt").val('');
+}
+
 function getNearbyNews() {
-	var mpos = userMarker.getPosition();
-	var np = getNews(mpos.lat(), mpos.lng());
+	//var mpos = userMarker.getPosition();
+	var mpos = getUserPos();
+	var np = getNews(mpos.lat, mpos.lng);
 	var i, p;
 	newsMarkers = [];
 	for (i in np) {
 		p = np[i];
 		alert(i + ": " + p.txt);
 		newsMarkers.push(new google.maps.Marker({
-			position: p.pos,
+			position: p.getPos(),
 			map: map,
 			title: p.txt
 		  })
@@ -100,6 +101,12 @@ function getNearbyNews() {
 		);
 	}
 	
+}
+
+function setPos(lat, lng) {
+	//var latlonpos = new google.maps.LatLng(lat, lng);
+	//userMarker.setPosition(latlonpos);
+	setUserPos(lat, lon);
 }
 
 $(document).ready(function () {
