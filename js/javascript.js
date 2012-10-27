@@ -1,15 +1,18 @@
+var map;
+var userMarker;
+
 function initialize() {
-	alert("FUUUU");
+	//alert("FUUUU");
   var mapOptions = {
     zoom: 16,
-    center: new google.maps.LatLng(-23.6069944, -46.6967345),
+    center: new google.maps.LatLng(-46.6967345, -23.6069944),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
-  var map = new google.maps.Map(document.getElementById('map_canvas'),
+  map = new google.maps.Map(document.getElementById('map_canvas'),
       mapOptions);
 
-  var marker = new google.maps.Marker({
+  userMarker = new google.maps.Marker({
     position: map.getCenter(),
     map: map,
     title: 'Click to zoom'
@@ -17,15 +20,15 @@ function initialize() {
 
   google.maps.event.addListener(map, 'center_changed', function() {
     // 3 seconds after the center of the map has changed, pan back to the
-    // marker.
+    // userMarker.
     /*window.setTimeout(function() {
-      map.panTo(marker.getPosition());
+      map.panTo(userMarker.getPosition());
     }, 3000);*/
   });
 
-  google.maps.event.addListener(marker, 'click', function() {
+  google.maps.event.addListener(userMarker, 'click', function() {
     map.setZoom(16);
-    map.setCenter(marker.getPosition());
+    map.setCenter(userMarker.getPosition());
   });
 }
 
@@ -48,7 +51,12 @@ function getPosSuccess (position) {
 	altAcc = coordinates.altitudeAccuracy;
 	head = coordinates.heading;
 	speed = coordinates.speed;
-	alert('lat:' + lat + "\nlon:" + lon);
+	//alert('lat:' + lat + "\nlon:" + lon);
+	
+	var latlonpos = new google.maps.LatLng(lat, lon);
+	userMarker.setPosition(latlonpos);
+	map.setZoom(16);
+    map.setCenter(latlonpos);
 }
 
 function getPosFake (posError) {
@@ -68,5 +76,5 @@ function getPosFake (posError) {
 }
 
 $(document).ready(function () {
-	getPosition('', getPosSuccess, getPosFake);
+	//getPosition('', getPosSuccess, getPosFake);
 });
