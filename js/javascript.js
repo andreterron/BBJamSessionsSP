@@ -78,18 +78,26 @@ function getNearbyNews() {
 	//var mpos = userMarker.getPosition();
 	var mpos = getUserPos();
 	var np = getNews(mpos.lat, mpos.lng);
-	var i, p;
+	var i, p, m;
 	newsMarkers = [];
 	for (i in np) {
 		p = np[i];
-		alert(i + ": " + p.txt);
-		newsMarkers.push(new google.maps.Marker({
+		//alert(i + ": " + p.txt);
+		m = new google.maps.Marker({
 			position: p.getPos(),
 			map: map,
 			title: p.txt
-		  })
+		  });
+		google.maps.event.addListener(m, 'click', function() {
+			baloon.close();
+			baloon.setContent(p.txt);
+			baloon.setAnchor(m);
+			baloon.open();
+			map.setCenter(m.getPosition());
+		  });
 			
-		);
+		
+		newsMarkers.push(m);
 	}
 	
 }

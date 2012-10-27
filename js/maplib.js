@@ -1,3 +1,5 @@
+var baloon = new google.maps.InfoWindow();
+
 function initialize() {
 	//alert("FUUUU");
 	var el = document.getElementById('map_canvas');
