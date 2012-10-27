@@ -5,7 +5,7 @@ function initialize() {
 	//alert("FUUUU");
   var mapOptions = {
     zoom: 16,
-    center: new google.maps.LatLng(-46.6967345, -23.6069944),
+    center: new google.maps.LatLng(-23.6069944, -46.6967345),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
@@ -60,9 +60,10 @@ function getPosSuccess (position) {
 }
 
 function getPosFake (posError) {
+	var ts = new Date().getTime();
 	getPosSuccess(
 	{
-		"timestamp":1351340814725,
+		"timestamp": ts,
 		"coords":{
 			"speed":null,
 			"heading":null,
@@ -75,6 +76,27 @@ function getPosFake (posError) {
 	});
 }
 
+var newsMarkers = [];
+
+function getNearbyNews() {
+	var mpos = userMarker.getPosition();
+	var np = getNews(mpos.lat(), mpos.lng());
+	var i, p;
+	newsMarkers = [];
+	for (i in np) {
+		alert(i + ": " + p.txt);
+		p = np[i];
+		newsMarkers.push(new google.maps.Marker({
+			position: p.pos,
+			map: map,
+			title: p.txt
+		  })
+			
+		);
+	}
+	
+}
+
 $(document).ready(function () {
-	//getPosition('', getPosSuccess, getPosFake);
+	getPosition('', getPosSuccess, getPosFake);
 });
