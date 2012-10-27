@@ -316,7 +316,7 @@ function geolocationError(posError) {
  *      - maximumAge (default = 0) - indicates that the application is willing to accept a cached position 
  *           whose age is no greater than the specified time in milliseconds.
  */
-function getPosition(fixType, f) {
+function getPosition(fixType, f, errorf) {
 	try {
 		var options;
 		
@@ -337,7 +337,8 @@ function getPosition(fixType, f) {
 				//displayOutput("Retrieving Geographic information using default parameters");
 			}
 			if (typeof f !== 'function') f = geolocationSuccess;
-			navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, options);
+			if (typeof errorf !== 'function') errorf = geolocationError;
+			navigator.geolocation.getCurrentPosition(f, errorf, options);
 		} 
 		else {
 			errorMessage("HTML5 geolocation is not supported.");
