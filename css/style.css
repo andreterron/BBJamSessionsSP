@@ -35,8 +35,6 @@ a:active{
 /* #### GENERAL STYLES */
 #main{
 	width: 768px;
-	height: 1280px;
-	overflow: hidden;
 }
 #clear{
 	width: 100%;
