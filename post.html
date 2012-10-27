@@ -1,45 +1,47 @@
-<!DOCTYPE html>
-<html>
-  <head>
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-	<script src="js/json2.js"></script>
-	<script src="js/jquery-1.8.1.js"></script>
-	<script src="js/jquery.cookie.js"></script>
-	<script src="js/jstorage.js"></script>
-	<script src="js/geolib.js" type="text/JavaScript"></script>
-	<script src="js/postlib.js" type="text/JavaScript"></script>
-	<script src="js/javascript.js" type="text/javascript" ></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<title>SquareNews</title>
-	<script>
-	
-	function postNewsHere() {
-		var t = $("#newstitle").val();
-		var str = $("#newstxt").val();
-		if (!str) return;
-		//var mpos = userMarker.getPosition();
-		var mpos = getUserPos();
-		postNews(t, str, mpos.lat, mpos.lng);
-		$("#newstxt").val('');
-	}
-	
-	$(document).ready( function() {
+<!DOCTYPE HTML>
+<html lang='pt-br'>
+	<head>
+		<script src="js/json2.js"></script>
+		<script src="js/jquery-1.8.1.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<script src="js/jstorage.js"></script>
+		<script src="js/geolib.js" type="text/JavaScript"></script>
+		<script src="js/postlib.js" type="text/JavaScript"></script>
+		<script src="js/jquery.mobile-1.2.0.js"></script>
+		<script src="js/javascript.js" type="text/javascript" ></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.2.0.css">
+		<title>SquareNews</title>
+		<script>
 		
-		$('#newstxt').keypress(function(event) {
-			if (event.keyCode == 13) {
-				event.preventDefault();
-				$("#postbutton").click();
-				//$(this).blur();
-			}
+		function postNewsHere() {
+			var t = $("#newstitle").val();
+			var str = $("#newstxt").val();
+			if (!str) return;
+			//var mpos = userMarker.getPosition();
+			var mpos = getUserPos();
+			postNews(t, str, mpos.lat, mpos.lng);
+			$("#newstxt").val('');
+		}
+		
+		$(document).ready( function() {
+			
+			$('#newstxt').keypress(function(event) {
+				if (event.keyCode == 13) {
+					event.preventDefault();
+					$("#postbutton").click();
+					//$(this).blur();
+				}
+			});
+			
 		});
-		
-	});
-	</script>
-  </head>
-  <body>
-  		<div id="main">
-			<input type="text" id="newstitle" name="title" placeholder="Title"/></br>
-			<textarea id="newstxt" name="txt" placeholder="Text"></textarea></br>
+		</script>
+	</head>
+	<body>
+		<div id="main">
+			<h1>What's Up?!</h1>
+			<input type="text" id="newstitle" name="title" placeholder="News title" style="width: 100%;"/>
+			<textarea id="newstxt" name="txt" placeholder="Tell us what's new!" rows="20"></textarea>
 			<button id="postbutton" onclick="postNewsHere();">Post!</button>
 			<div id="menu_div">
 				<ul id="bottom_menu">
@@ -49,5 +51,5 @@
 				</ul>
 			</div>
 		</div>
-  </body>
+	</body>
 </html>

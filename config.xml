@@ -32,8 +32,8 @@
 	<name>SquareNews</name>
 	<description>Spread it near!</description>
 	<author href="http://twitter.com/#!/AcquaBlue">Thiago Itagaki</author>
-	<rim:loadingScreen backgroundImage="img/splash.jpg" foregroundImage="img/splash.jpg" onLocalPageLoad="true"/>
-	<icon src="img/icon.png"/>
+	<rim:loadingScreen backgroundImage="images/splash.png" onLocalPageLoad="true"/>
+	<icon src="images/icon.png"/>
 
 	<rim:orientation mode="portrait" />
 

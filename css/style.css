@@ -63,14 +63,14 @@ a:active{
 	width: 220px;
 	height: 200px;
 }
-#menu_1>img{
+#menu_1 img{
 	margin: 35px 0px 0px 50px;
 }
-#menu_2>img{
+#menu_2 img{
 	margin: 50px 0px 0px 0px;
 }
 #menu_3{ left: 548px; }
-#menu_3>img{
+#menu_3 img{
 	margin: 35px 50px 0px 0px;
 }
 
