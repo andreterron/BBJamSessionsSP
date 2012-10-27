@@ -74,15 +74,6 @@ function getPosFake (posError) {
 
 var newsMarkers = [];
 
-function postNewsHere() {
-	var str = $("#newstxt").val();
-	if (!str) return;
-	//var mpos = userMarker.getPosition();
-	var mpos = getUserPos();
-	postNews (str, mpos.lat, mpos.lng);
-	$("#newstxt").val('');
-}
-
 function getNearbyNews() {
 	//var mpos = userMarker.getPosition();
 	var mpos = getUserPos();

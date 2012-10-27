@@ -10,6 +10,17 @@
 	<script src="js/postlib.js" type="text/JavaScript"></script>
 	<script src="js/javascript.js" type="text/javascript" ></script>
 	<script>
+	
+	function postNewsHere() {
+		var t = $("#newstitle").val();
+		var str = $("#newstxt").val();
+		if (!str) return;
+		//var mpos = userMarker.getPosition();
+		var mpos = getUserPos();
+		postNews(t, str, mpos.lat, mpos.lng);
+		$("#newstxt").val('');
+	}
+	
 	$(document).ready( function() {
 		
 		$('#newstxt').keypress(function(event) {
@@ -24,7 +35,8 @@
 	</script>
   </head>
   <body>
-		<textarea id="newstxt" name="txt" placeholder="Write your news"></textarea></br>
+		<input type="text" id="newstitle" name="title" placeholder="Title"/></br>
+		<textarea id="newstxt" name="txt" placeholder="Text"></textarea></br>
 		<button id="postbutton" onclick="postNewsHere();">Post!</button>
 	
   </body>

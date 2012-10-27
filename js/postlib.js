@@ -4,12 +4,13 @@ function readStoredPosts() {
 	var i, p;
 	for (i in np) {
 		p = JSON.parse(np[i]);
-		posts.push(new Post(p.txt, p.timestamp, p.lat, p.lng));
+		posts.push(new Post(p.title, p.txt, p.timestamp, p.lat, p.lng));
 	}
 }
 readStoredPosts();
 
-function Post (txt, timestamp, lat, lng) {
+function Post (title, txt, timestamp, lat, lng) {
+	this.title = title
 	this.txt = txt;
 	this.timestamp = timestamp;
 	if (typeof lat === 'number') {
@@ -25,6 +26,7 @@ function Post (txt, timestamp, lat, lng) {
 	}
 	this.toJSON = function () {
 		return JSON.stringify({
+			"title": this.title,
 			"txt": this.txt,
 			"timestamp": this.timestamp,
 			"lat": this.lat,
@@ -37,10 +39,10 @@ function Post (txt, timestamp, lat, lng) {
 }
 
 
-function postNews (str, lat, lng) {
+function postNews (t, str, lat, lng) {
 	//var g = findGrid(lat, lng);
 	var ts = new Date().getTime();
-	posts.push(new Post(str, ts, lat, lng));
+	posts.push(new Post(t, str, ts, lat, lng));
 	$.jStorage.set('posts', posts);
 }
 
