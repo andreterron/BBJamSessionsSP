@@ -42,9 +42,9 @@ function Post (id, title, txt, timestamp, lat, lng) {
 }
 
 
-function postNews (t, str, lat, lng) {
+function postNews (t, str, lat, lng, ts) {
 	//var g = findGrid(lat, lng);
-	var ts = new Date().getTime();
+	if (typeof ts !== 'number') ts = new Date().getTime();
 	var i = posts.length;
 	posts[i] = new Post(i, t, str, ts, lat, lng);
 	$.jStorage.set('posts', posts);

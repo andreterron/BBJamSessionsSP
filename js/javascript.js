@@ -116,7 +116,58 @@ function setPos(lat, lng) {
 	setUserPos(lat, lon);
 }
 
+function createData() {
+	var defstr;
+	defstr += "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in consequat massa. In sed enim sem. Mauris scelerisque euismod posuere. Phasellus non libero nec nisl pellentesque gravida eget non magna. Proin sed dui quis lacus aliquet laoreet. Maecenas nec elit mauris, ac dignissim felis. Proin mollis iaculis commodo. Praesent vestibulum lobortis massa at rhoncus. Vivamus feugiat enim eu felis faucibus ullamcorper. Etiam euismod pretium venenatis. Phasellus iaculis vestibulum nibh ac interdum. Praesent quis tellus ut sapien ornare congue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin justo iaculis sapien aliquam vulputate. Aenean diam nisi, cursus ac ullamcorper eget, pellentesque et ipsum.";
+	defstr += "Sed non odio nibh, eget adipiscing dolor. Nunc venenatis felis vitae arcu imperdiet laoreet. Maecenas vulputate mauris sed velit vulputate sed molestie mauris malesuada. Curabitur eu neque id neque interdum molestie. Praesent porta justo ut quam consectetur ut tempor magna mattis. Donec eget lorem quis dui accumsan faucibus quis eu nibh. Mauris felis nunc, rhoncus sit amet eleifend consectetur, bibendum ac nunc. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque aliquet pretium nibh, nec congue lacus tincidunt a. Nullam eu orci id tellus consequat feugiat egestas pellentesque sem.";
+	defstr += "Mauris tempus nulla sit amet sapien tristique consequat. Etiam tempor gravida arcu, sed eleifend mauris auctor vitae. Phasellus vel sapien quis lectus rhoncus tincidunt. Praesent et magna sit amet erat consequat porttitor. Aenean felis ante, egestas et porttitor vitae, vehicula semper tortor. Suspendisse molestie, nisi accumsan euismod tincidunt, dui leo ullamcorper magna, pellentesque sagittis nunc lorem ut turpis. Sed facilisis auctor placerat. Nulla tincidunt massa at orci vestibulum sagittis. Sed orci enim, lobortis eget sollicitudin blandit, auctor consectetur magna. Aenean interdum, orci eu auctor lobortis, lectus lacus adipiscing metus, tincidunt congue nibh neque vel magna. Fusce arcu ligula, fringilla varius euismod vel, ornare accumsan ipsum. Quisque lectus nunc, gravida sit amet tincidunt vel, tempus quis risus. Sed viverra cursus congue. Maecenas sit amet turpis et nibh auctor malesuada at eu nibh. Nam metus tellus, blandit id iaculis vel, interdum sed elit. Curabitur a nibh et sem aliquam imperdiet vitae facilisis elit.";
+	var s;
+	var fd = [
+		{
+			'title': 'BB Jam Sessions',
+			'lat': -23.605876773233792,
+			'lng': -46.69672250747681
+		},
+		{
+			'title': 'Tomando um Red Bull',
+			'lat': -23.6044217675578,
+			'lng': -46.69457674026489
+		},
+		{
+			'title': '3 pessoas sobrevivem acidentes',
+			'lat': -23.608393501687186,
+			'lng': -46.69989824295044
+		},
+		{
+			'title': 'Promoção de Red Bull!',
+			'lat': -23.6085901190629,
+			'lng': -46.69221639633179
+		},
+		{
+			'title': '50% de deconto na Pizza',
+			'lat': -23.611008488662403,
+			'lng': -46.69571399688721
+		},
+		{
+			'title': 'Evento no parque ibirapuera',
+			'lat': -23.595384640928152,
+			'lng': -46.66571617126465
+		},
+		{
+			'title': 'Restaurante de má qualidade',
+			'lat': -23.589967834236496,
+			'lng': -46.73601150512695
+		}
+	];
+	var f;
+	//ts = (new Date().getTime() - ld.length * 3600000);
+	for (i in fd) {
+		f = fd[i];
+		s = (f.hasOwnProperty('str') ? f.str : defstr);
+		postNews(f.title, s, f.lat, f.lng);
+	}
+}
+
 $(document).ready(function () {
 	getPosition('', getPosSuccess, getPosFake);
-	var i;
 });
