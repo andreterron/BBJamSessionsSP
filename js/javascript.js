@@ -78,7 +78,7 @@ function getNearbyNews() {
 	//var mpos = userMarker.getPosition();
 	var mpos = getUserPos();
 	var np = getNews(mpos.lat, mpos.lng);
-	var i, p, m;
+	var i, j, p, m;
 	newsMarkers = [];
 	for (i in np) {
 		p = np[i];
@@ -90,14 +90,22 @@ function getNearbyNews() {
 		  });
 		google.maps.event.addListener(m, 'click', function() {
 			baloon.close();
-			baloon.setContent(p.txt);
+			baloon.setContent(p.title);
 			baloon.setAnchor(m);
-			baloon.open();
+			baloon.setMap(map);
+			//baloon.open(m);
 			map.setCenter(m.getPosition());
 		  });
 			
 		
 		newsMarkers.push(m);
+
+	}
+	if (typeof $.jStorage.get('selectedNews', null) === 'number') {
+		j = $.jStorage.get('selectedNews', null);
+		google.maps.event.trigger(newsMarkers[j], 'click');
+		$.jStorage.set('selectedNews', null)
+		//newsMarkers[i].click();
 	}
 	
 }
@@ -110,4 +118,5 @@ function setPos(lat, lng) {
 
 $(document).ready(function () {
 	getPosition('', getPosSuccess, getPosFake);
+	var i;
 });

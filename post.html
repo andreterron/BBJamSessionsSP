@@ -17,11 +17,14 @@
 		function postNewsHere() {
 			var t = $("#newstitle").val();
 			var str = $("#newstxt").val();
-			if (!str) return;
+			if (!str || !t) return;
 			//var mpos = userMarker.getPosition();
 			var mpos = getUserPos();
-			postNews(t, str, mpos.lat, mpos.lng);
+			var i = postNews(t, str, mpos.lat, mpos.lng);
 			$("#newstxt").val('');
+			$("#newstitle").val('');
+			window.location.replace("map.html");
+			$.jStorage.set("selectedNews", i);
 		}
 		
 		$(document).ready( function() {
