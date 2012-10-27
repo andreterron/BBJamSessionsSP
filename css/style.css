@@ -52,6 +52,7 @@ a:active{
 /* #### LIST PAGE */
 .newsPost{
 	width: 90%;
+	height: 48px;
 	border: 1px #CCC solid;
 	border-radius: 10px;
 	padding: 30px;
@@ -70,6 +71,18 @@ a:active{
 		color-stop(0, rgb(230,230,230)),
 		color-stop(1, rgb(245,245,245))
 	);
+}
+.newsAction{
+	width: 120px;
+	float: right;
+}
+.newsAction img{
+	margin: 0px 5px;
+}
+.newsTitle{
+	width: 570px;
+	overflow: hidden;
+	float: left;
 }
 
 /* #### END -> LIST PAGE */
