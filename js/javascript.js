@@ -86,7 +86,7 @@ function getNearbyNews() {
 		m = new google.maps.Marker({
 			position: p.getPos(),
 			map: map,
-			title: p.txt
+			title: p.title
 		  });
 		google.maps.event.addListener(m, 'click', function() {
 			baloon.close();
@@ -108,6 +108,11 @@ function getNearbyNews() {
 		//newsMarkers[i].click();
 	}
 	
+}
+
+function getNewsMap(nid) {
+	$.jStorage.set("selectedNews", nid);
+	window.location.replace("map.html");
 }
 
 function setPos(lat, lng) {

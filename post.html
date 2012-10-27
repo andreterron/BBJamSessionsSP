@@ -23,8 +23,7 @@
 			var i = postNews(t, str, mpos.lat, mpos.lng);
 			$("#newstxt").val('');
 			$("#newstitle").val('');
-			window.location.replace("map.html");
-			$.jStorage.set("selectedNews", i);
+			getNewsMap(i);
 		}
 		
 		$(document).ready( function() {
