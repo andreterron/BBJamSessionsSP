@@ -32,6 +32,7 @@ a:active{
 	outline: none;
 }
 
+/* #### GENERAL STYLES */
 #main{
 	width: 768px;
 	height: 1280px;
@@ -43,12 +44,42 @@ a:active{
 	clear: both;
 }
 
+/* #### END -> GENERAL STYLES */
+
+/* #### LIST PAGE */
+.newsPost{
+	width: 90%;
+	border: 1px #CCC solid;
+	border-radius: 10px;
+	padding: 30px;
+	margin: 20px auto;
+	box-shadow: 3px 3px 20px #EEE;
+	background-image: linear-gradient(bottom, rgb(230,230,230) 0%, rgb(245,245,245) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(230,230,230) 0%, rgb(245,245,245) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(230,230,230) 0%, rgb(245,245,245) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(230,230,230) 0%, rgb(245,245,245) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(230,230,230) 0%, rgb(245,245,245) 100%);
+	
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(230,230,230)),
+		color-stop(1, rgb(245,245,245))
+	);
+}
+
+/* #### END -> LIST PAGE */
+
+/* #### POST PAGE */
 #post_div{
 	margin: 20px;
 }
 #newstxt{
 	height: 300px;
 }
+
+/* #### END -> POST PAGE */
 
 /* #### MENU STYLES */
 #menu_div ul{

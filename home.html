@@ -1,18 +1,53 @@
-<!DOCTYPE HTML>
-<html lang='pt-br'>
-	<head>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<title>SquareNews</title>
-	</head>
-	<body>
+<!DOCTYPE html>
+<html>
+  <head>
+	<script src="js/json2.js"></script>
+	<script src="js/jquery-1.8.1.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+	<script src="js/jstorage.js"></script>
+	<script src="js/geolib.js" type="text/JavaScript"></script>
+	<script src="js/postlib.js" type="text/JavaScript"></script>
+	<script src="js/javascript.js" type="text/javascript" ></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>SquareNews</title>
+	<script>
+	function updateList() {
+		var txt = "";
+		
+		var mpos = getUserPos();
+		var np = getNews(mpos.lat, mpos.lng);
+		var i, p;
+		newsMarkers = [];
+		for (i in np) {
+			p = np[i];
+			txt += "<div id='post" + i + "' class='newsPost'><div class='newsTitle'>" + p.title + "</div></div>";
+		}
+//		$("#postlist").html(txt);
+	}
+	$(document).ready( function() {
+		updateList();
+	});
+	</script>
+  </head>
+  <body>
 		<div id="main">
+			<div id="postlist">
+				<div id='post1' class='newsPost'><div class='newsTitle'>Teste 1</div></div>
+				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 2</div></div>
+				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 3</div></div>
+				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 4</div></div>
+				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 5</div></div>
+				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 6</div></div>
+				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 7</div></div>
+			</div>
+			<div id="clear"></div>
 			<div id="menu_div">
 				<ul id="bottom_menu">
-					<li id="menu_1" class="menu_secondary"><a href="post.html"><img src="images/Icon_Post.png"/></a></li>
-					<li id="menu_2" class="menu_primary"><a href="home.html"><img src="images/Icon_Home.png"/></a></li>
-					<li id="menu_3" class="menu_secondary"><a href="config.html"><img src="images/Icon_Config.png"/></a></li>
+					<li id="menu_1" class="menu_secondary"><img src="images/Icon_Post.png"/></li>
+					<li id="menu_2" class="menu_primary"><img src="images/Icon_Home.png"/></li>
+					<li id="menu_3" class="menu_secondary"><img src="images/Icon_Config.png"/></li>
 				</ul>
 			</div>
 		</div>
-	</body>
+  </body>
 </html>

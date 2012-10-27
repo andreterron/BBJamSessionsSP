@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<script src="js/json2.js"></script>
 	<script src="js/jquery-1.8.1.js"></script>
 	<script src="js/jquery.cookie.js"></script>
@@ -21,9 +20,9 @@
 		newsMarkers = [];
 		for (i in np) {
 			p = np[i];
-			txt += "<div id='post" + i + "' class='newsPot'><div class='newsTitle'>" + p.title + "</div></div>";
+			txt += "<div id='post" + i + "' class='newsPost'><div class='newsTitle'>" + p.title + "</div></div>";
 		}
-		$("#postlist").html(txt);
+//		$("#postlist").html(txt);
 	}
 	$(document).ready( function() {
 		updateList();
@@ -31,9 +30,17 @@
 	</script>
   </head>
   <body>
-		<div id="postlist">
-		</div>
 		<div id="main">
+			<div id="postlist">
+				<div id='post1' class='newsPost'><div class='newsTitle'>Teste 1</div></div>
+				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 2</div></div>
+				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 3</div></div>
+				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 4</div></div>
+				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 5</div></div>
+				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 6</div></div>
+				<div id='post2' class='newsPost'><div class='newsTitle'>Teste 7</div></div>
+			</div>
+			<div id="clear"></div>
 			<div id="menu_div">
 				<ul id="bottom_menu">
 					<li id="menu_1" class="menu_secondary"><img src="images/Icon_Post.png"/></li>
