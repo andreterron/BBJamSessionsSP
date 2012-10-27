@@ -15,16 +15,23 @@
 	function updateList() {
 		var txt = "";
 		
+		var mpos = getUserPos();
+		var np = getNews(mpos.lat, mpos.lng);
+		var i, p;
+		newsMarkers = [];
+		for (i in np) {
+			p = np[i];
+			txt += "<div id='post" + i + "' class='newsPot'><div class='newsTitle'>" + p.title + "</div></div>";
+		}
+		$("#postlist").html(txt);
 	}
 	$(document).ready( function() {
 		updateList();
-		
 	});
 	</script>
   </head>
   <body>
 		<div id="postlist">
-			<div
 		</div>
 		<div id="main">
 			<div id="menu_div">
