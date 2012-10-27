@@ -35,7 +35,9 @@
 	<rim:loadingScreen backgroundImage="images/splash.png" onLocalPageLoad="true"/>
 	<icon src="images/icon.png"/>
 
-	<rim:orientation mode="portrait" />
+	<feature id="blackberry.app.orientation">
+    	<param name="mode" value="portrait" />
+	</feature>
 
 	<content src="home.html"/>
 
