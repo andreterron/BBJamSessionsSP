@@ -74,6 +74,11 @@ function getPosFake (posError) {
 			"latitude":-23.6069944
 		}
 	});
+	/* Other places: 
+		here:	-23.6069944, -46.6967345
+		south:	-23.6095929, -46.6976452
+	*/
+	
 }
 
 var newsMarkers = [];
@@ -84,8 +89,8 @@ function getNearbyNews() {
 	var i, p;
 	newsMarkers = [];
 	for (i in np) {
-		alert(i + ": " + p.txt);
 		p = np[i];
+		alert(i + ": " + p.txt);
 		newsMarkers.push(new google.maps.Marker({
 			position: p.pos,
 			map: map,

@@ -3,14 +3,15 @@ function readStoredPosts() {
 	var np = $.jStorage.get('posts', []);
 	var i, p;
 	for (i in np) {
-		p = np[i];
-		posts.push(new Post(p.txt, p.lat, p.lng));
+		p = JSON.parse(np[i]);
+		posts.push(new Post(p.timestamp, p.txt, p.lat, p.lng));
 	}
 }
 readStoredPosts();
 
-function Post (txt, pos, lng) {
+function Post (txt, timestamp, pos, lng) {
 	this.txt = txt;
+	this.timestamp = timestamp;
 	if (typeof pos === 'number') {
 		this.pos = new google.maps.LatLng(pos, lng);
 	} else if (typeof pos === 'object') {
@@ -20,11 +21,11 @@ function Post (txt, pos, lng) {
 	}
 	this.lat = function() {return this.pos.lat();};
 	this.lng = function() {return this.pos.lng();};
-	this.toJSON() {
+	this.toJSON = function () {
 		return JSON.stringify({
-			txt = this.txt;
-			lat = this.lat();
-			lng = this.lng();
+			txt: this.txt,
+			lat: this.lat(),
+			lng: this.lng()
 		});
 	}
 	this.getPos = function() {
@@ -35,7 +36,8 @@ function Post (txt, pos, lng) {
 
 function postNews (str, lat, lng) {
 	//var g = findGrid(lat, lng);
-	posts.push(new Post(str, lat, lng));
+	var ts = new Date().getTime();
+	posts.push(new Post(ts, str, lat, lng));
 	$.jStorage.set('posts', posts);
 }
 
