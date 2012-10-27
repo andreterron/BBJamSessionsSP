@@ -1,0 +1,73 @@
+@charset "utf-8";
+
+*{
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+	font-size: 40px;
+	font-family: "Slate Pro (regular)";
+}
+
+h1{
+	font-size: 54px;
+	font-family: "Slate Pro Medium";
+	font-weight: normal;
+	text-decoration: none;
+}
+
+h6{
+	font-size: 30px;
+	font-family: "Slate Pro Light";
+	font-weight: normal;
+	text-decoration: none;
+	font-style: normal;
+}
+
+a{
+	text-decoration: none;
+	color: #000;
+}
+
+#main{
+	width: 768px;
+	height: 1280px;
+}
+
+/* #### MENU STYLES */
+#menu_div ul{
+	position: fixed;
+	top: 1000px;
+	width: 768px;
+	height: 280px;
+	background: url(../images/menu_background.png) 0px 80px repeat-x;
+	color: #FAFAFA
+}
+#bottom_menu li{
+	display: inline-block;
+	text-align: center;
+}
+.menu_primary{
+	position: absolute;
+	left: 220px;
+	width: 328px;
+	height: 280px;
+	background: url(../images/menu_background_home.png) center no-repeat;
+}
+.menu_secondary{
+	position: absolute;
+	top: 80px;
+	width: 220px;
+	height: 200px;
+}
+#menu_1>img{
+	margin: 35px 0px 0px 50px;
+}
+#menu_2>img{
+	margin: 50px 0px 0px 0px;
+}
+#menu_3{ left: 548px; }
+#menu_3>img{
+	margin: 35px 50px 0px 0px;
+}
+
+/* #### END -> MENU STYLES */
